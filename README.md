@@ -2,7 +2,7 @@
 
 I'm Ahmed Ali. This is my portfolio of software, game, film and 3D projects.
 
-[Visit my portfolio](https://ahmedali7597.github.io/Portfolio/)
+[Visit my portfolio](https://ahmedali7597.github.io/)
 
 Built with [Astro](https://astro.build), plain CSS and a little JavaScript.
 
@@ -13,6 +13,6 @@ npm install
 npm run dev
 ```
 
-Then open http://localhost:4321/Portfolio/.
+Then open http://localhost:4321/.
 
 Pushing to `main` deploys the site through GitHub Actions.

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- The portfolio is one page. Submit this file in Google Search Console and Bing Webmaster Tools. -->
+<!-- The portfolio is one page. robots.txt points crawlers here; also submit it in Google Search Console. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ahmedali7597.github.io/Portfolio/</loc>
+    <loc>https://ahmedali7597.github.io/</loc>
   </url>
 </urlset>

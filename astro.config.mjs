@@ -1,8 +1,8 @@
-// GitHub Pages serves this repository at /Portfolio/.
-// After renaming the repo to ahmedali7597.github.io, delete `base` and the site moves to the root URL.
+// GitHub Pages serves this repository (Ahmedali7597.github.io) at the root of ahmedali7597.github.io.
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
   site: "https://ahmedali7597.github.io",
-  base: "/Portfolio/",
+  // The site used to live at /Portfolio/; old links (like the LinkedIn post) land on the front page.
+  redirects: { "/Portfolio": "/" },
 });
