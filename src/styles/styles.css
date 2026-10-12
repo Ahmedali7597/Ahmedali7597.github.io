@@ -601,7 +601,7 @@ ul {
 }
 .clue-hint {
   color: var(--muted);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
 }
 /* The biography sits beside the personal story, separated by a print-style rule. */
 .profile-copy {
@@ -656,6 +656,33 @@ ul {
 .skill-column li .label {
   align-self: center;
   color: var(--muted);
+}
+
+/* The 404 page: one newspaper correction notice, centred in the window. */
+.not-found {
+  display: grid;
+  align-content: center;
+  min-height: 100svh;
+  padding-block: 2rem 4rem;
+}
+.not-found-title {
+  margin-block: 0.4em 0.3em;
+  font: 600 clamp(3.5rem, 12vw, 11rem) / 0.9 var(--font-display);
+  letter-spacing: -0.04em;
+}
+.not-found-note {
+  max-width: 34rem;
+  font: 400 clamp(1.25rem, 2vw, 1.8rem) / 1.35 var(--font-display);
+}
+
+/* Small text links still get a target at least 24px tall (WCAG 2.5.8). */
+.hero-foot a,
+.footer-row a,
+.classified a,
+.demo figcaption a,
+.intro-replay {
+  display: inline-block;
+  padding-block: 0.3rem;
 }
 
 /* 6. Contact links and the final publication line. */
@@ -820,7 +847,7 @@ ul {
 }
 .classified > span {
   display: block;
-  font-size: 0.62rem;
+  font-size: 0.7rem;
 }
 /* These preview columns link to the complete project stories below. */
 .edition-stories {
@@ -999,7 +1026,7 @@ ul {
   }
   .brand span {
     display: inline;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
   .menu-toggle {
     display: block;
@@ -1025,7 +1052,7 @@ ul {
     font-size: 0.75rem;
   }
   .edition-line {
-    font-size: 0.62rem;
+    font-size: 0.7rem;
   }
 
   .hero-grid {
@@ -1037,23 +1064,23 @@ ul {
   }
 
   .portrait figcaption {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
   .file-stamp {
     right: 0.8rem;
     bottom: 1rem;
     padding: 0.35rem 0.6rem;
-    font-size: 0.55rem;
+    font-size: 0.7rem;
   }
   .file-stamp strong {
     font-size: 1.1rem;
   }
   .hero-foot {
     flex-wrap: wrap;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
   .section-meta {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
   .display-heading {
     font-size: 17vw;
@@ -1068,14 +1095,14 @@ ul {
   }
   .case-number {
     margin-top: 0.3rem;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
   .case-category {
     grid-column: 2;
     grid-row: 2;
     max-width: none;
     text-align: left;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
   .case-symbol {
     grid-column: 3;
@@ -1112,7 +1139,7 @@ ul {
     font-size: 1.05rem;
   }
   .footer-row {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
 
   .edition-name {
@@ -1122,13 +1149,13 @@ ul {
     font-size: 23vw;
   }
   .masthead-deck {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
   .masthead-deck > span:last-child {
     display: none;
   }
   .newswire {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
   }
   .newswire-label {
     padding-inline: 0.65rem;
@@ -1218,7 +1245,7 @@ ul {
     font-size: 1.4rem;
   }
   .classified > .label {
-    font-size: 0.57rem;
+    font-size: 0.7rem;
   }
 }
 

@@ -152,6 +152,12 @@ a.card:active {
   background: var(--card-line);
 }
 .face p {
+  /* An over-long description is cut at six lines rather than spilling out of the card. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  overflow: hidden;
   margin: 0;
   color: #3d3a33;
   font: 400 1em / 1.3 var(--font-body);
@@ -213,22 +219,28 @@ a.card:active {
   }
 }
 
-/* Reduced motion, Pause or no JavaScript: the same cards as a simple wrapped row. */
-[data-motion="off"] .deck {
+/* Reduced motion, Pause, no JavaScript, or a screen too short for the ring (a landscape phone):
+   the same cards as a simple wrapped row. scripts/deck.js adds .is-static for short screens. */
+[data-motion="off"] .deck,
+.deck.is-static {
   height: auto;
 }
-[data-motion="off"] .deck-stage {
+[data-motion="off"] .deck-stage,
+.is-static .deck-stage {
   position: static;
   height: auto;
   overflow: visible;
 }
-[data-motion="off"] .deck-quote em {
+[data-motion="off"] .deck-quote em,
+.is-static .deck-quote em {
   opacity: 1;
 }
-[data-motion="off"] .jack-rear {
+[data-motion="off"] .jack-rear,
+.is-static .jack-rear {
   display: none;
 }
-[data-motion="off"] .deck-table {
+[data-motion="off"] .deck-table,
+.is-static .deck-table {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -237,14 +249,16 @@ a.card:active {
   container-type: normal;
   perspective: none;
 }
-[data-motion="off"] .jack {
+[data-motion="off"] .jack,
+.is-static .jack {
   position: relative;
   width: 150px;
   height: auto;
   margin: 0;
   transform: none !important;
 }
-[data-motion="off"] .hand {
+[data-motion="off"] .hand,
+.is-static .hand {
   position: static;
   display: flex;
   flex-wrap: wrap;
@@ -252,7 +266,8 @@ a.card:active {
   gap: 1.5rem;
   padding: 0;
 }
-[data-motion="off"] .skill {
+[data-motion="off"] .skill,
+.is-static .skill {
   --cw: 150px;
   position: relative;
   inset: auto;

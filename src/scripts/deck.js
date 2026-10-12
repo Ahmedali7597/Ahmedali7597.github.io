@@ -23,6 +23,9 @@ export function initDeck() {
   const jack = deck.querySelector(".jack");
   const cards = [...deck.querySelectorAll(".skill")];
   const n = cards.length;
+  // A landscape phone is too short for the ring, so it gets the still row of cards instead.
+  const short = window.matchMedia("(max-height: 500px)");
+  const animated = () => document.body.dataset.motion === "on" && !short.matches;
 
   let geo;
   let frame = 0;
@@ -74,7 +77,8 @@ export function initDeck() {
 
   function render() {
     frame = 0;
-    if (!geo || document.body.dataset.motion !== "on") return;
+    deck.classList.toggle("is-static", short.matches);
+    if (!geo || !animated()) return;
     const p = clamp((geo.top - deck.getBoundingClientRect().top) / geo.pin);
     stage.style.setProperty("--p", p.toFixed(4));
     jack.style.transform =
@@ -109,7 +113,7 @@ export function initDeck() {
   // The orbit runs on time, not scroll. It stops off screen, in hidden tabs (rAF pauses there),
   // under reduced motion and when the visitor presses Pause.
   function tick(now) {
-    if (!dealt || !inView || document.body.dataset.motion !== "on") {
+    if (!dealt || !inView || !animated()) {
       looping = false;
       last = 0;
       return;
@@ -148,4 +152,5 @@ export function initDeck() {
   }).observe(deck);
   // Pause/Resume and the reduced-motion setting swap between the animated and static layouts.
   document.addEventListener("motionchange", () => requestAnimationFrame(measure));
+  short.addEventListener("change", () => requestAnimationFrame(measure));
 }

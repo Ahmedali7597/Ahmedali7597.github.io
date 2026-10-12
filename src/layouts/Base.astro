@@ -17,11 +17,23 @@ import "../styles/intro.css";
 import "../styles/deck.css";
 import "../styles/motion.css";
 
-const title = "Ahmed Ali | Software Developer & Game Maker";
-const description =
-  "Ahmed Ali's personal edition. Full-stack applications, Unity games and the stories behind the code. Based in Hamilton, Ontario.";
-const url = new URL(import.meta.env.BASE_URL, Astro.site).href;
+// Each page passes its own title and description; the 404 page also asks not to be indexed.
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+const {
+  title = "Ahmed Ali | Software Developer & Game Maker",
+  description = "Ahmed Ali is a Software Development student at Mohawk College in Hamilton, Ontario, open to internships. Full-stack web apps, Unity games and Blender films.",
+  noindex = false,
+} = Astro.props;
+
+// Asset paths start from the site root, so they still load on pages served from any URL (like the 404).
+const base = import.meta.env.BASE_URL;
+const url = new URL(base, Astro.site).href;
 const portrait = new URL("assets/img/profile-noir.jpg", url).href;
+const socialCard = new URL("assets/img/social-card.jpg", url).href;
 
 // Structured data helps search engines connect this page to Ahmed's other profiles.
 const person = {
@@ -30,7 +42,7 @@ const person = {
   name: "Ahmed Ali",
   url,
   image: portrait,
-  jobTitle: "Software Developer",
+  jobTitle: "Software Development Student",
   address: { "@type": "PostalAddress", addressLocality: "Hamilton", addressRegion: "ON", addressCountry: "CA" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "Mohawk College" },
   knowsAbout: ["Java", "JavaScript", "Node.js", "PostgreSQL", "Unity", "C#", "Blender", "Video editing"],
@@ -53,24 +65,27 @@ const person = {
     <meta name="description" content={description} />
     <meta name="author" content="Ahmed Ali" />
     <meta name="theme-color" content="#f0ece3" />
-    <!-- Link previews use the same title, description and portrait as the page. -->
+    {noindex && <meta name="robots" content="noindex" />}
+    <!-- Link previews (LinkedIn, X, Discord, iMessage) use a 1200x630 card made for sharing. -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ahmed Ali" />
+    <meta property="og:locale" content="en_CA" />
     <meta property="og:url" content={url} />
     <meta property="og:title" content={title} />
-    <meta
-      property="og:description"
-      content="Full-stack applications, Unity games and the stories behind the code. Explore Ahmed Ali's personal edition."
-    />
-    <meta property="og:image" content={portrait} />
-    <!-- The share image is square, so use the square card instead of the wide one. -->
-    <meta name="twitter:card" content="summary" />
-    <link rel="canonical" href={url} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={socialCard} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ahmed Ali's portfolio: the Jack of Spades with the five spade cards of his skills" />
+    <meta name="twitter:card" content="summary_large_image" />
+    {!noindex && <link rel="canonical" href={url} />}
+    <link rel="sitemap" href={`${base}sitemap.xml`} />
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23f0ece3'/%3E%3Cpath transform='translate(14 12) scale(.72)' d='M50 2C38 20 8 38 8 62c0 15 13 25 27 22 6-1 10-5 12-9-1 10-6 18-14 23h34c-8-5-13-13-14-23 2 4 6 8 12 9 14 3 27-7 27-22C92 38 62 20 50 2Z'/%3E%3C/svg%3E"
     />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(person)} />
-    <link rel="preload" href="assets/img/profile-noir.jpg" as="image" />
+    {!noindex && <link rel="preload" href={`${base}assets/img/profile-noir.jpg`} as="image" />}
     <script is:inline>
       // Apply a saved theme before the styles paint the page.
       try {
