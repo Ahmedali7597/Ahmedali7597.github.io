@@ -9,8 +9,8 @@ export const skills = [
   },
   {
     name: "Game developer",
-    description: "Unity games in C#, like Cosmic Perfection.",
-    href: "#case-cp",
+    description: "Unity games in C#, like Emotional Garden.",
+    href: "#case-eg",
   },
   {
     name: "Filmmaker",

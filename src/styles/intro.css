@@ -319,3 +319,8 @@ html:has(.intro[open]) {
     grid-column: 1 / -1;
   }
 }
+
+/* One advertised story now, so it spans the page. */
+.intro-ad-pair {
+  grid-template-columns: 1fr;
+}

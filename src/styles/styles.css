@@ -852,7 +852,7 @@ ul {
 /* These preview columns link to the complete project stories below. */
 .edition-stories {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   margin-top: 2rem;
   padding-block: 1.5rem;
   border-top: 4px double var(--text);
